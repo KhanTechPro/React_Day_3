@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Logo from '../assets/logo.png';
 import heroImg from '../assets/heroImg.png';
 import comment1 from '../assets/comment1.png';
@@ -7,15 +7,25 @@ import comment3 from '../assets/comment3.png';
 import progressIcon from '../assets/progressIcon.png'
 import { AiOutlineClose, AiOutlineMenu, AiFillPlayCircle } from "react-icons/ai";
 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+
+
+
 const Header = () => {
   const [nav, setNav] = useState(false);
 
   const handleNav = () => {
       setNav(!nav);
   }
+
+  useEffect(() => {
+    AOS.init({duration: 2000})
+  })
   return (
     <div className='bg-lightPink h-[700px] md:rounded-b-[20%] '>
-        <div className="flex justify-between items-center h-24 max-w-[1360px] px-4 mx-auto bg-lightPink">
+        <div className="flex justify-between items-center h-24 max-w-[1360px] px-4 mx-auto bg-lightPink" data-aos="fade-down">
             <img src={Logo} alt='/'/>
             <ul className='hidden md:flex justify-between items-center gap-8'>
                 <a href="/"><li className='font-medium hover:text-pink duration-300'>Home</li></a>
@@ -42,7 +52,7 @@ const Header = () => {
 
         </div>
 
-        <div className='grid md:grid-cols-2 max-w-[1360px] px-4 mx-auto relative md:top-12'>
+        <div className='grid md:grid-cols-2 max-w-[1360px] px-4 mx-auto relative md:top-12' data-aos="fade-up">
           <div className='my-[80px]'>
             <h1 className='font-bold title md:text-6xl text-4xl'>Learn New Skill Gain More Education</h1>
             <p className='py-5 w-[340px]'>eLearn is an interesting platform that will tech you in more an interactive way</p>
@@ -53,7 +63,7 @@ const Header = () => {
             </div>
           </div>
 
-          <div className='relative md:top-[35px] invisible md:visible'>
+          <div className='relative md:top-[35px] invisible md:visible' data-aos="fade-up" >
             <img src={heroImg} alt="/" className=' z-0' />
             <img src={comment1} alt="/" className='w-[200px] absolute top-[100px] left-8'/>
             <img src={comment2} alt="/" className='w-[240px] absolute bottom-[40px] left-8'/>
